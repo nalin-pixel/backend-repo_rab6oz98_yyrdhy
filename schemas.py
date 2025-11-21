@@ -41,6 +41,21 @@ class Product(BaseModel):
 # Add your own schemas here:
 # --------------------------------------------------
 
+class Furniture(BaseModel):
+    """
+    Furniture collection schema
+    Collection name: "furniture" (lowercase of class name)
+    """
+    name: str = Field(..., description="Furniture name")
+    category: str = Field(..., description="Category e.g., Chair, Table")
+    material: Optional[str] = Field(None, description="Primary material")
+    price: float = Field(..., ge=0, description="Unit price")
+    stock: int = Field(0, ge=0, description="Units in stock")
+    width_cm: Optional[float] = Field(None, ge=0, description="Width in cm")
+    depth_cm: Optional[float] = Field(None, ge=0, description="Depth in cm")
+    height_cm: Optional[float] = Field(None, ge=0, description="Height in cm")
+    image_url: Optional[str] = Field(None, description="Image URL")
+
 # Note: The Flames database viewer will automatically:
 # 1. Read these schemas from GET /schema endpoint
 # 2. Use them for document validation when creating/editing
